@@ -8,9 +8,9 @@ function httpGetAsync(theUrl, callback) {
   xmlHttp.open("GET", theUrl, true); // true for asynchronous
   xmlHttp.send(null);
 }
-var b;
 // Convert it into json and change DOM accordingly
 function jsonMaker(b) {
+
   var parsedJ = JSON.parse(b);
   var summary = parsedJ.currently.summary;
   temp = parsedJ.currently.temperature;
@@ -28,10 +28,15 @@ function jsonMaker(b) {
   document.querySelector(".temp").innerHTML = temp + "&deg;";
   document.querySelector('.windspeed').innerHTML = windSpeed;
   document.querySelector('.humidity').innerHTML = humidity;
-  document.querySelector('.pressure').innerHTML = pressure;
-
+  document.querySelector('.pressure').innerHTML = pressure;  
+  
 }
-
+// For ShowPosition2 
+function jsonMaker2(c) {
+  parsedJ2 = JSON.parse(c);
+  cityName = parsedJ2.data.city_name;
+  console.log(cityName);
+}
 // Get current location in long and lat
 function getLocation() {
   if (navigator.geolocation)
@@ -39,8 +44,8 @@ function getLocation() {
 }
 
 function showPosition(position) {
-  var lon = position.coords.latitude;
-  var lat = position.coords.longitude;
+   lon = position.coords.latitude;
+   lat = position.coords.longitude;
   httpGetAsync(
     "https://cors.io/?https://api.darksky.net/forecast/4180b14d0ce80e1a97ccec5c6e67ca39/" +
       lon +
@@ -50,7 +55,18 @@ function showPosition(position) {
     jsonMaker
   );
 }
+function showPosition2(position) {
+  httpGetAsync(
+    "https://cors.io/?https://api.weatherbit.io/v2.0/current?&" +
+      lon +
+      "," +
+      lat +
+      "&key=b8bdad2f87d947d7964c4bbfec088453",
+    jsonMaker2
+  );
+}
 getLocation();
+
 
 // https://cors.io/?
 // https://cors-anywhere.herokuapp.com/
