@@ -29,7 +29,7 @@ h1 {
 }
 
 .weather-container {
-  height: 40rem;;
+  height: 30rem;;
   width: 35rem;
   background: rgba(255,255,255,.3);
   border-radius: 1em;
@@ -54,24 +54,27 @@ h2 {
   align-items: center;
 }
 .icon-temp canvas {
-  height: 7rem;
-  width: 7rem;
+  height: 6rem;
+  width: 6rem;
   margin-left: 2em;
 }
 .icon-temp p {
-  font-size: 8em;
+  font-size: 10em;
   width: 60%;
   height: 80%;
-  margin-left: .2em;
   font-family: 'Julius Sans One', sans-serif;
+  color : #252422;
+  transition: all   .2s;
+  position: relative;
+  right: 5%;
 }
 .temp:after {
   content: "C";
-  font-size: .5em;
+  font-size: .3em;
 }
 .temp-f:after {
   content: "F";
-  font-size: .5em;
+  font-size: .3em;
 }
 .weather-info {
   height: 15%;
