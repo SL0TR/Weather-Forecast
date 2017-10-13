@@ -14,7 +14,7 @@ body {
 section {
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .5)),url('https://s1.postimg.org/2o45lommkv/Lakeside_Sun_Rise_1920x1080.jpg');
+  background-image:url('https://s1.postimg.org/2o45lommkv/Lakeside_Sun_Rise_1920x1080.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -25,11 +25,12 @@ h1 {
   font-size: 2em;
   height: 15%;
   padding-top: .5em;
+  font-family: 'Julius Sans One', sans-serif;
 }
 
 .weather-container {
-  height: 75%;
-  width: 40%;
+  height: 40rem;;
+  width: 35rem;
   background: rgba(255,255,255,.3);
   border-radius: 1em;
   box-shadow: 1px 1px 15px 1px #2e2e2e;
@@ -53,15 +54,25 @@ h2 {
   align-items: center;
 }
 .icon-temp canvas {
-  height: 10rem;
-  width: 10rem;
+  height: 7rem;
+  width: 7rem;
+  margin-left: 2em;
 }
 .icon-temp p {
   font-size: 8em;
   width: 60%;
   height: 80%;
+  margin-left: .2em;
+  font-family: 'Julius Sans One', sans-serif;
 }
-
+.temp:after {
+  content: "C";
+  font-size: .5em;
+}
+.temp-f:after {
+  content: "F";
+  font-size: .5em;
+}
 .weather-info {
   height: 15%;
   width: 90%;
@@ -79,7 +90,37 @@ h2 {
   align-items: center;
   height: 100%;
   width: 33%;
-  padding: 1em;
+  padding-right: .5em;
+}
+.humidity-info img {
+  height: 2rem;
+  width: 5rem;
+  
+}
+
+.humidity-info p  {
+  font-size: 1.2em;
+  position: relative;
+  right: 10%;
+}
+.windspeed:after {
+  content: " km/h";
+  font-size: .5em;
+}
+.humidity-info .humidity {
+  position: relative;
+  right: 15%;
+}
+.humidity::after {
+  content: " %";
+  font-size: .5em;
+}
+.pressure:after {
+  content: " hPa";
+  font-size: .5em;
+}
+.humidity-info:last-of-type {
+  width: 35%;
 }
 .c-or-f {
   height: 15%;
@@ -105,7 +146,7 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000;
+  background-color: #2196F3;
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 1em;
@@ -125,6 +166,7 @@ h2 {
   justify-content: center;
   align-items: center;
   border-radius: .8em;
+  font-weight: bold;
 }
 
 input:checked + .slider {
