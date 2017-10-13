@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-size: 16px;
+  color: #080808;
+  text-rendering: optimizeLegibility;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+}
+section {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, .5)),url('https://s1.postimg.org/2o45lommkv/Lakeside_Sun_Rise_1920x1080.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+h1 {
+  font-size: 1.5em;
+  height: 15%;
+}
+
+.weather-container {
+  height: 75%;
+  width: 40%;
+  background: rgba(255,255,255,.3);
+  border-radius: 1em;
+  box-shadow: 1px 1px 15px 1px #2e2e2e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: .5em 0;
+}
+h2 {
+  height: 10%;
+}
+.date {
+  height: 10%;
+}
+.icon-temp {
+  height: 43%;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.icon-temp img {
+  height: 8rem;
+  width: 8rem;
+}
+.icon-temp p {
+  font-size: 8em;
+}
+
+.weather-info {
+  height: 15%;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.weather-info img {
+  height: 100%;
+  width: 50%;
+}
+.humidity-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 33%;
+  padding: 1em;
+}
+.c-or-f {
+  height: 15%;
+  width: 90%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 1em;
+}
+
+.slider:before {
+  position: absolute;
+  content: "C";
+  height: 26px;
+  width: 56px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .8em;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before {
+  transform: translateX(36px);
+  content: "F"
+}
+
+
+.my-info {
+  height: 15%;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.my-info h3 {
+  position: relative;
+  top: 10%;
+}
+.my-contact {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;  
+}
+i {
+  font-size: 2em;
+  cursor: pointer;
+  transition: all .2s;
+}
+.ion-social-linkedin:hover {
+  color: #007bb5;
+}
+.ion-social-facebook:hover {
+  color: #3b5998;
+}
+.ion-social-googleplus:hover {
+  color: #dd4b39;
+}
+/* 
+morning: 
+https://s1.postimg.org/2o45lommkv/Lakeside_Sun_Rise_1920x1080.jpg
+afternoon: https://s1.postimg.org/1yrmd0yf27/maxresdefault.jpg 
+evening: 
+https://s1.postimg.org/54ewk8v74f/Lakeside_Sunset_1920x1080.png
+
+
+http://louie.co.nz/25th_hour/
+
+*/
