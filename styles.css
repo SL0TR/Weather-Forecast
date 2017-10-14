@@ -14,7 +14,6 @@ body {
 section {
   height: 100%;
   width: 100%;
-  background-image:url('https://s1.postimg.org/2o45lommkv/Lakeside_Sun_Rise_1920x1080.jpg');
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -23,15 +22,27 @@ section {
 }
 h1 {
   font-size: 2em;
-  height: 15%;
   padding-top: .5em;
   font-family: 'Julius Sans One', sans-serif;
 }
+.time-with-icon {
+  display: flex;
+  height: 10%;
+  width: 10%;
+  justify-content: space-around;
+  align-items: center;
 
+}
+.current-time {
+  margin: 1em 0;
+  font-size: 1.2em;
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: bold;
+}
 .weather-container {
   height: 30rem;;
   width: 35rem;
-  background: rgba(255,255,255,.3);
+  background: rgba(255,255,255,.45);
   border-radius: 1em;
   box-shadow: 1px 1px 15px 1px #2e2e2e;
   display: flex;
@@ -43,8 +54,24 @@ h1 {
 h2 {
   height: 5%;
 }
+.location-with-icon {
+  display: flex;
+  height: 10%;
+  width: 20%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.location {
+  font-weight: 400;
+  font-size: 1.2em;
+  height: 40%;
+}
 .w-info {
   height: 5%;
+  font-size: 2em;
+  font-weight: bold;
 }
 .icon-temp {
   height: 43%;
@@ -105,6 +132,7 @@ h2 {
   font-size: 1.2em;
   position: relative;
   right: 10%;
+  font-weight: 500;
 }
 .windspeed:after {
   content: " km/h";
@@ -196,6 +224,12 @@ input:checked + .slider:before {
 .my-info h3 {
   position: relative;
   top: 10%;
+  
+}
+.my-info h3 a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #EB5E28;
 }
 .my-contact {
   height: 80%;
@@ -217,6 +251,9 @@ i {
 }
 .ion-social-googleplus:hover {
   color: #dd4b39;
+}
+.ion-social-github:hover {
+  color: #333;
 }
 /* 
 morning: 

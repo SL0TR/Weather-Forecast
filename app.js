@@ -8,10 +8,12 @@ function httpGetAsync(theUrl, callback) {
   xmlHttp.open("GET", theUrl, true); // true for asynchronous
   xmlHttp.send(null);
 }
+
 // Convert it into json and change DOM accordingly
 function jsonMaker(b) {
 
   var parsedJ = JSON.parse(b);
+  unixTime = parsedJ.currently.time;;
   var summary = parsedJ.currently.summary;
   temp = parsedJ.currently.temperature;
   var timeZ = parsedJ.timezone;
@@ -22,27 +24,67 @@ function jsonMaker(b) {
   var pressure = parsedJ.currently.pressure;
   pressure = Math.floor(pressure);
   temp = Math.floor(temp);
-  document.querySelector(".timeZ").innerHTML = timeZ;
   skyCon(icon);
   document.querySelector(".w-info").innerHTML = summary;
   document.querySelector(".temp").innerHTML = temp + "&deg;";
   document.querySelector('.windspeed').innerHTML = windSpeed;
   document.querySelector('.humidity').innerHTML = humidity;
-  document.querySelector('.pressure').innerHTML = pressure;  
-  
+  document.querySelector('.pressure').innerHTML = pressure;    
 }
+var b;
+function currentDayTime() {
+  var bg = document.querySelector('section');
+  if (b > 19  || b < 4) {
+    document.querySelector('.greeting').innerHTML = "It's Night time!";
+    bg.style.backgroundImage = 'url(https://images.imgbox.com/1d/27/ac0ZUJ2X_o.jpg)';
+  } else if (b > 4  || b < 12) {
+    document.querySelector('.greeting').innerHTML = "It's Morning!";
+    bg.style.backgroundImage = 'url(https://images.imgbox.com/0d/cc/EixB5djm_o.jpg)';
+  } else if (b > 12  || b < 17 ) {
+    document.querySelector('.greeting').innerHTML = "It's Afternoon!";
+    bg.style.backgroundImage = 'url(https://images.imgbox.com/63/db/Gfc5An0h_o.jpg)';
+  } else if (b > 17  || b < 7) {
+    document.querySelector('.greeting').innerHTML = "It's Evening!";
+    bg.style.backgroundImage = 'url(https://images.imgbox.com/30/32/SvlHZQoO_o.jpg)';
+  }
+
+}
+
+setInterval(function() {
+
+    var currentTime = new Date(),
+        hours = currentTime.getHours(),
+        minutes = currentTime.getMinutes(),
+        ampm = hours > 11 ? 'PM' : 'AM';
+
+    hours += hours < 10 ? '0' : '';
+    minutes += minutes < 10 ? '0' : '';
+
+    timeNow = hours + ":" + minutes + " " + ampm;
+    document.querySelector('.current-time').innerHTML = timeNow;
+    b = hours;
+    currentDayTime();
+}, 1000); 
+
+
+
+
+
 // For ShowPosition2 
 function jsonMaker2(c) {
   parsedJ2 = JSON.parse(c);
-  cityName = parsedJ2.data.city_name;
-  console.log(cityName);
+  cityName = parsedJ2.data[0].city_name;
+  country = parsedJ2.data[0].country_code;
+  document.querySelector('.location').innerHTML = cityName + ", " + country; 
 }
+
 // Get current location in long and lat
 function getLocation() {
   if (navigator.geolocation)
     navigator.geolocation.getCurrentPosition(showPosition);
 }
-
+var lon;
+var lat;
 function showPosition(position) {
    lon = position.coords.latitude;
    lat = position.coords.longitude;
@@ -54,17 +96,19 @@ function showPosition(position) {
       "?exclude=monthly,hourly,daily,minutely,flags,alerts&units=ca",
     jsonMaker
   );
+  showPosition2();
 }
 function showPosition2(position) {
   httpGetAsync(
-    "https://cors.io/?https://api.weatherbit.io/v2.0/current?&" +
+    "https://api.weatherbit.io/v2.0/current?&lat=" +
       lon +
-      "," +
+      "&lon=" +
       lat +
       "&key=b8bdad2f87d947d7964c4bbfec088453",
     jsonMaker2
   );
 }
+
 getLocation();
 
 
@@ -126,3 +170,5 @@ icons.set("wind", Skycons.WIND);
 icons.set("fog", Skycons.FOG);
 
 icons.play();
+
+
