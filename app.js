@@ -1,3 +1,8 @@
+window.onload = function() {
+  document.querySelector(".loader-container").style.display = "none";
+};
+
+
 // Get the URL in string format
 function httpGetAsync(theUrl, callback) {
   var xmlHttp = new XMLHttpRequest();
@@ -56,10 +61,7 @@ setInterval(function() {
         hours = currentTime.getHours(),
         minutes = currentTime.getMinutes(),
         ampm = hours > 11 ? 'PM' : 'AM';
-
-    hours += hours < 10 ? '0' : '';
-    minutes += minutes < 10 ? '0' : '';
-
+        
     timeNow = hours + ":" + minutes + " " + ampm;
     document.querySelector('.current-time').innerHTML = timeNow;
     b = hours;
