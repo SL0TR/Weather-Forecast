@@ -39,19 +39,20 @@ function jsonMaker(b) {
 var b;
 function currentDayTime() {
   var bg = document.querySelector('section');
-  if (b > 19  || b < 4) {
-    document.querySelector('.greeting').innerHTML = "It's Night time!";
-    bg.style.backgroundImage = 'url(https://images.imgbox.com/1d/27/ac0ZUJ2X_o.jpg)';
-  } else if (b > 4  || b < 12) {
-    document.querySelector('.greeting').innerHTML = "It's Morning!";
+  var greeting = document.querySelector('.greeting');
+  if(b >= 5  && b <= 11) {
+    greeting .innerHTML = "It's Morning!";
     bg.style.backgroundImage = 'url(https://images.imgbox.com/0d/cc/EixB5djm_o.jpg)';
-  } else if (b > 12  || b < 17 ) {
-    document.querySelector('.greeting').innerHTML = "It's Afternoon!";
-    bg.style.backgroundImage = 'url(https://images.imgbox.com/63/db/Gfc5An0h_o.jpg)';
-  } else if (b > 17  || b < 7) {
-    document.querySelector('.greeting').innerHTML = "It's Evening!";
+  } else if (b >= 12  && b <= 16 ) {
+    greeting .innerHTML = "It's Afternoon!";
+    bg.style.backgroundImage = 'url(https://images.imgbox.com/40/6f/36FietMn_o.jpg)';
+  } else if (b >=17  && b <= 19) {
+    greeting .innerHTML = "It's Evening!";
     bg.style.backgroundImage = 'url(https://images.imgbox.com/30/32/SvlHZQoO_o.jpg)';
-  }
+  } else if (b >=20  || b <= 4) {
+    greeting .innerHTML = "It's Night time!";
+    bg.style.backgroundImage = 'url(https://images.imgbox.com/1d/27/ac0ZUJ2X_o.jpg)';
+  }  
 
 }
 
@@ -75,8 +76,8 @@ setInterval(function() {
 // For ShowPosition2 
 function jsonMaker2(c) {
   parsedJ2 = JSON.parse(c);
-  cityName = parsedJ2.data[0].city_name;
-  country = parsedJ2.data[0].country_code;
+  cityName = parsedJ2.city;
+  country = parsedJ2.country;
   document.querySelector('.location').innerHTML = cityName + ", " + country; 
 }
 
@@ -102,11 +103,7 @@ function showPosition(position) {
 }
 function showPosition2(position) {
   httpGetAsync(
-    "https://api.weatherbit.io/v2.0/current?&lat=" +
-      lon +
-      "&lon=" +
-      lat +
-      "&key=b8bdad2f87d947d7964c4bbfec088453",
+    "https://ipinfo.io/json",
     jsonMaker2
   );
 }
