@@ -27,10 +27,10 @@ function jsonMaker(b) {
   var icon = parsedJ.currently.icon;
   var windSpeed = parsedJ.currently.windSpeed;
   var humidity = parsedJ.currently.humidity;
-  humidity = humidity * 100;
+  humidity = Math.round(humidity * 100);
   var pressure = parsedJ.currently.pressure;
-  pressure = Math.floor(pressure);
-  temp = Math.floor(temp);
+  pressure = Math.round(pressure);
+  temp = Math.round(temp);
   skyCon(icon);
   document.querySelector(".w-info").innerHTML = summary;
   document.querySelector(".temp").innerHTML = temp + "&deg;";
@@ -67,6 +67,9 @@ setInterval(function() {
         hours = currentTime.getHours(),
         minutes = currentTime.getMinutes(),
         ampm = hours > 11 ? 'PM' : 'AM';
+        if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
         
     timeNow = hours + ":" + minutes + " " + ampm;
     document.querySelector('.current-time').innerHTML = timeNow;
