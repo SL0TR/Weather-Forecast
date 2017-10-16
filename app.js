@@ -1,3 +1,5 @@
+
+// CSS LOADER FOR THE ONLOAD
 window.onload = function() {
   document.querySelector(".loader-container").style.display = "none";
 };
@@ -36,26 +38,29 @@ function jsonMaker(b) {
   document.querySelector('.humidity').innerHTML = humidity;
   document.querySelector('.pressure').innerHTML = pressure;    
 }
-var b;
+
+// MAKE CHANGES TO BACKGROUND AND GREETING TITLE ACCORDING TO THE TIME!
+var currentHour;
 function currentDayTime() {
   var bg = document.querySelector('section');
   var greeting = document.querySelector('.greeting');
-  if(b >= 5  && b <= 11) {
-    greeting .innerHTML = "It's Morning!";
+  if(currentHour >= 5  && currentHour <= 11) {
+    greeting .innerHTML = "Good Morning!";
     bg.style.backgroundImage = 'url(https://images.imgbox.com/0d/cc/EixB5djm_o.jpg)';
-  } else if (b >= 12  && b <= 16 ) {
-    greeting .innerHTML = "It's Afternoon!";
+  } else if (currentHour >= 12  && currentHour <= 16 ) {
+    greeting .innerHTML = "Good Afternoon!";
     bg.style.backgroundImage = 'url(https://images.imgbox.com/40/6f/36FietMn_o.jpg)';
-  } else if (b >=17  && b <= 19) {
-    greeting .innerHTML = "It's Evening!";
+  } else if (currentHour >=17  && currentHour <= 19) {
+    greeting .innerHTML = "Good Evening!";
     bg.style.backgroundImage = 'url(https://images.imgbox.com/30/32/SvlHZQoO_o.jpg)';
-  } else if (b >=20  || b <= 4) {
-    greeting .innerHTML = "It's Night time!";
+  } else if (currentHour >=20  || currentHour <= 4) {
+    greeting .innerHTML = "Good Night!";
     bg.style.backgroundImage = 'url(https://images.imgbox.com/1d/27/ac0ZUJ2X_o.jpg)';
   }  
 
 }
 
+// Get current time from the browser and update it per second
 setInterval(function() {
 
     var currentTime = new Date(),
@@ -65,7 +70,7 @@ setInterval(function() {
         
     timeNow = hours + ":" + minutes + " " + ampm;
     document.querySelector('.current-time').innerHTML = timeNow;
-    b = hours;
+    currentHour = hours;
     currentDayTime();
 }, 1000); 
 
@@ -101,6 +106,8 @@ function showPosition(position) {
   );
   showPosition2();
 }
+
+// Using a second API for the location
 function showPosition2(position) {
   httpGetAsync(
     "https://ipinfo.io/json",
@@ -111,8 +118,6 @@ function showPosition2(position) {
 getLocation();
 
 
-// https://cors.io/?
-// https://cors-anywhere.herokuapp.com/
 
 // Call Skycon icons from API
 function skyCon(wthr) {
